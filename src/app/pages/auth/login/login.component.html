@@ -1,0 +1,40 @@
+<div style="border: 1px solid #dddd; padding: 20px 50px; border-radius: 5px">
+  <h4 style="text-align: center; margin-bottom: 10px">Login</h4>
+  <div *ngIf="error" style="color: red; text-align: center;margin-top: 5;">{{ error }}</div>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="username">Username: </label>
+      <input
+        [style.border]="emailControl.touched && emailControl?.errors?.['required'] && '1px solid  red'"
+        class="form-control"
+        id="username"
+        type="text"
+        formControlName="username"
+      />
+    </div>
+    <div class="mb-3">
+      <label style="margin: 0px" for="password">Password: </label>
+      <input
+        [style.border]="passwordError.isRequired && '1px solid  red'"
+        id="password"
+        class="form-control"
+        type="password"
+        name="password"
+        formControlName="password"
+      />
+
+      <div class="mt-1" style="color: red" *ngIf="passwordError.isRequired">
+        Password is required !
+      </div>
+    </div>
+    <div style="text-align: right">
+      <button
+        type="submit"
+        [disabled]="!profileForm.valid"
+        class="btn btn-primary mb-3"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
