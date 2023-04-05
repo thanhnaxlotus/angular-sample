@@ -231,10 +231,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/auth/login',
       },
       {
-        title: 'Logout',
-        link: '/auth/logout',
-      },
-      {
         title: 'Register',
         link: '/auth/register',
       },

@@ -26,6 +26,7 @@ export class AuthService {
     return this.userSubject.value;
   }
   public set setUser(user: User) {
+    localStorage.setItem(USER_KEY, JSON.stringify(user))
     this.userSubject.next(user)
   }
   loginApi(username: string, password: string) {

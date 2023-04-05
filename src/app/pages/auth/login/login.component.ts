@@ -6,12 +6,13 @@ import { AuthService } from '../../../service/auth.service';
 @Component({
   selector: 'ngx-login',
   templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
 
 
 export class NgxLoginComponent {
   constructor(private authService: AuthService, private router: Router,) {
-    console.log('-----data-----','login')
+    console.log('-----data-----', 'login')
     if (authService.getUser?.id) {
       router.navigate(['/'])
     }
@@ -29,11 +30,20 @@ export class NgxLoginComponent {
       isRequired = true
     }
     return {
-      isRequired
+      isRequired,
+      isError: isRequired
     }
   }
-  get emailControl() {
-    return this.profileForm.get('username');
+  get usernameError() {
+    const username = this.profileForm.get('username');
+    let isRequired = false;
+    if (username.touched && username.errors?.['required']) {
+      isRequired = true
+    }
+    return {
+      isRequired,
+      isError: isRequired
+    }
   }
   onSubmit() {
     if (this.profileForm.valid) {
@@ -45,7 +55,7 @@ export class NgxLoginComponent {
         },
         (error) => {
           console.log('-----data-----', error)
-          this.error = error.error?.message
+          this.error = error.error?.message || 'Cannot connect to server !!!'
         }
       )
     }
