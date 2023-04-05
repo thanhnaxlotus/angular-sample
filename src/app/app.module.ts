@@ -5,8 +5,8 @@
  */
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
@@ -20,9 +20,15 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import { NgxLoginComponent } from './pages/auth/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BaseService } from './service/base.service';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    NgxLoginComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -39,8 +45,14 @@ import {
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
   ],
   bootstrap: [AppComponent],
+  providers:[
+    // {provide:APP_INITIALIZER,useFactory:appInitializer}
+    {provide:HTTP_INTERCEPTORS,useClass:BaseService,multi:true}
+  ]
 })
 export class AppModule {
 }
