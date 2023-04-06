@@ -6,7 +6,7 @@ import { Product } from "../../models/products";
   selector: "ngx-products",
   templateUrl: './products.component.html'
 })
-export class NgxProductsPages implements OnInit {
+export class NgxProductsComponent implements OnInit {
   products: Product[];
   public arr = [1,2,3,4];
 

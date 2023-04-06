@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-import { NgxProductsPages } from './products.component';
+import { NgxProductsComponent } from './products.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    NgxProductsPages
+    NgxProductsComponent
   ]
 })
 export class ProductsModule { }

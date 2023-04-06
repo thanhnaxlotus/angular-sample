@@ -5,7 +5,7 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
-import { NgxProductsPages } from './products/products.component';
+import { NgxProductsComponent } from './products/products.component';
 
 const routes: Routes = [{
   path: '',
@@ -21,7 +21,7 @@ const routes: Routes = [{
     },
     {
       path: 'products',
-      component: NgxProductsPages,
+      component: NgxProductsComponent,
     },
     {
       path: 'layout',
