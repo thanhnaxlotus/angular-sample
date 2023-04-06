@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgxProductsComponent } from './products.component';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ToggleComponent } from './togle.component';
+import { NgxProductsComponent } from './products.component';
 
 @NgModule({
   imports: [
@@ -11,7 +10,6 @@ import { ToggleComponent } from './togle.component';
   ],
   declarations: [
     NgxProductsComponent,
-    ToggleComponent
   ]
 })
 export class ProductsModule { }
