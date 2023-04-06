@@ -7,7 +7,7 @@ import { ProductService } from '../../../service/product.service';
   templateUrl: './echarts.component.html',
 })
 export class EchartsComponent {
-  constructor(private productService: ProductService) {
-    productService.getProducts().then(data => console.log('-----data-----', data));
+  constructor() {
+
   }
 }

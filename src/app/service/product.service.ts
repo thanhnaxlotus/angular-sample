@@ -8,6 +8,6 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
   getProducts() {
-    return this.http.get<any>('products').pipe().toPromise()
+    return this.http.get<any>('products').pipe()
   }
 }
