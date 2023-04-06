@@ -22,8 +22,9 @@ import { ThemeModule } from './@theme/theme.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgxLoginComponent } from './pages/auth/login/login.component';
-import { BaseService } from './service/base.service';
+import { JwtInterceptor } from './service/midleware/jwt.interceptor';
 import { CommonModule } from "@angular/common";
+import { ErrorInterceptor } from './service/midleware/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -48,12 +49,14 @@ import { CommonModule } from "@angular/common";
     ThemeModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+
   ],
   bootstrap: [AppComponent],
-  providers:[
+  providers: [
     // {provide:APP_INITIALIZER,useFactory:appInitializer}
-    {provide:HTTP_INTERCEPTORS,useClass:BaseService,multi:true}
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ]
 })
 export class AppModule {

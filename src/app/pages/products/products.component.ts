@@ -8,21 +8,17 @@ import { Product } from "../../models/products";
 })
 export class NgxProductsComponent implements OnInit {
   products: Product[];
-  public arr = [1,2,3,4];
+  title: string = "List product"
+  checked = true;
 
   constructor(private productService: ProductService) {
 
   }
-
-
   ngOnInit(): void {
     this.productService.getProducts().subscribe(
       (products) => {
         this.products = products
-        console.log('-----data-----', this.products)
       }
     )
-    this.arr = [1,2,3,4];
-    console.log("arr", this.arr)
   }
 }

@@ -1,11 +1,11 @@
 import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { environment } from "../../environments/environment";
-import { AuthService } from "./auth.service";
+import { environment } from "../../../environments/environment";
+import { AuthService } from "../auth.service";
 
 @Injectable({ providedIn: 'root' })
-export class BaseService implements HttpInterceptor {
+export class JwtInterceptor  implements HttpInterceptor {
   constructor(private authService: AuthService, private http: HttpClient) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const account = this.authService.getUser;
