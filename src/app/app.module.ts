@@ -23,7 +23,6 @@ import { ThemeModule } from './@theme/theme.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgxLoginComponent } from './pages/auth/login/login.component';
-import { RegisterComponent } from './pages/auth/register/register.component';
 import { ErrorInterceptor } from './service/midleware/error.interceptor';
 import { JwtInterceptor } from './service/midleware/jwt.interceptor';
 
@@ -31,7 +30,6 @@ import { JwtInterceptor } from './service/midleware/jwt.interceptor';
   declarations: [
     AppComponent,
     NgxLoginComponent,
-    RegisterComponent
   ],
   imports: [
     BrowserModule,
