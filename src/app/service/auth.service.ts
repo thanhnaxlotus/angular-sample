@@ -1,23 +1,22 @@
-import { Injectable, Input } from "@angular/core";
-import { BehaviorSubject, Observable } from "rxjs";
-import { User } from "../models/user";
-import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { BehaviorSubject } from "rxjs";
 import { map } from "rxjs/operators";
-import { USER_KEY } from "../constant/localstorageKey";
 import { environment } from "../../environments/environment";
+import { USER_KEY } from "../constant/localstorageKey";
+import { User } from "../models/user";
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private userSubject: BehaviorSubject<User | null>;
-  private baseUrl: string;
 
   constructor(
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
   ) {
     this.userSubject = new BehaviorSubject<User | null>(JSON.parse(localStorage.getItem(USER_KEY) || '{}') as User);
-    this.baseUrl = environment.baseUrl;
+
   }
 
   public get getUser() {
@@ -29,7 +28,7 @@ export class AuthService {
   }
   loginApi(username: string, password: string) {
     // on success the api returns an account object with a JWT auth token
-    return this.http.post<any>(`${this.baseUrl}/login`, {
+    return this.http.post<any>(`login`, {
       username,
       password
     }).pipe(map(account => {

@@ -12,7 +12,7 @@ import { takeWhile } from 'rxjs/operators';
   selector: 'ngx-country-orders-map',
   styleUrls: ['./country-orders-map.component.scss'],
   template: `
-    <div leaflet [leafletOptions]="options" [leafletLayers]="layers" (leafletMapReady)="mapReady($event)"></div>
+    <!-- <div leaflet [leafletOptions]="options" [leafletLayers]="layers" (leafletMapReady)="mapReady($event)"></div> -->
   `,
 })
 export class CountryOrdersMapComponent implements OnDestroy {

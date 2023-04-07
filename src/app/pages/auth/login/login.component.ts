@@ -1,21 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../service/auth.service';
+import { environment } from '../../../../environments/environment';
 
+declare const gapi: any;
 @Component({
   selector: 'ngx-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 
-
-export class NgxLoginComponent {
-  constructor(private authService: AuthService, private router: Router,) {
+export class NgxLoginComponent implements OnInit {
+  constructor(private authService: AuthService, private router: Router) {
     console.log('-----data-----', 'login')
     if (authService.getUser?.id) {
       router.navigate(['/'])
     }
+  }
+  ngOnInit(): void {
+    gapi.load('auth2', () => {
+      gapi.auth2.init({
+        client_id: environment.googleClientId,
+      });
+    });
   }
   error = '';
   profileForm = new FormGroup({
@@ -60,5 +68,11 @@ export class NgxLoginComponent {
       )
     }
   }
-
+  onSignIn() {
+    const googleAuth = gapi.auth2.getAuthInstance();
+    googleAuth.signIn().then((googleUser: any) => {
+      const id_token = googleUser.getAuthResponse().id_token;
+      console.log('-----data-----', id_token)
+    }).catch((err) => console.log('-----data-----', err));
+  }
 }

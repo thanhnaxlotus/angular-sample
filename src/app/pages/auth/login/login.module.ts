@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NbAuthModule } from '@nebular/auth';
 import {
@@ -9,9 +9,8 @@ import {
   NbCheckboxModule,
   NbInputModule
 } from '@nebular/theme';
-import { ThemeModule } from '../../@theme/theme.module';
-import { NgxAuthRoutingModule } from './auth-routing.module';
-import { AuthComponent } from './auth.component';
+import { NgxLoginComponent } from './login.component';
+
 
 
 @NgModule({
@@ -23,12 +22,13 @@ import { AuthComponent } from './auth.component';
     NbButtonModule,
     NbCheckboxModule,
     NbInputModule,
-    NgxAuthRoutingModule,
     NbAuthModule,
-    ThemeModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+
   ],
   declarations: [
-    AuthComponent
   ],
 })
 export class NgxAuthModule {

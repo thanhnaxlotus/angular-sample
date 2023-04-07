@@ -10,5 +10,7 @@
 
 export const environment = {
   production: false,
+  apiUrl: 'http://localhost:4200',
   baseUrl: 'http://localhost:8000',
+  googleClientId:'538773082333-cchckbaqsr0maa524pht10kf4ka6sdtd.apps.googleusercontent.com'
 };

@@ -3,6 +3,7 @@
  * Copyright Akveo. All Rights Reserved.
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
+import { CommonModule } from "@angular/common";
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -22,14 +23,15 @@ import { ThemeModule } from './@theme/theme.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgxLoginComponent } from './pages/auth/login/login.component';
-import { JwtInterceptor } from './service/midleware/jwt.interceptor';
-import { CommonModule } from "@angular/common";
+import { RegisterComponent } from './pages/auth/register/register.component';
 import { ErrorInterceptor } from './service/midleware/error.interceptor';
+import { JwtInterceptor } from './service/midleware/jwt.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     NgxLoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,6 @@ import { ErrorInterceptor } from './service/midleware/error.interceptor';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-
   ],
   bootstrap: [AppComponent],
   providers: [
